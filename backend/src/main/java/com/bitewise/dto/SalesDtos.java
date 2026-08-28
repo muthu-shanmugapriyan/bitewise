@@ -1,0 +1,3 @@
+package com.bitewise.dto;
+import jakarta.validation.constraints.*; import java.time.LocalDate; import java.util.*;
+public final class SalesDtos { public record SaleItemRequest(@NotNull UUID productId,@Min(0) int quantity){} public record DailySaleRequest(@NotNull LocalDate date,@Min(0) int orderCount,@NotNull List<SaleItemRequest> items){} public record DailySaleResponse(LocalDate date,int orderCount,boolean closed,List<Item> items,Metrics metrics){ public record Item(UUID productId,String productName,int quantity,java.math.BigDecimal revenue,java.math.BigDecimal productCost,java.math.BigDecimal profit){} public record Metrics(java.math.BigDecimal revenue,java.math.BigDecimal productCost,java.math.BigDecimal grossProfit){} } }

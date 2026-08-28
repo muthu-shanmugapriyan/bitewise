@@ -1,0 +1,3 @@
+package com.bitewise.dto;
+import jakarta.validation.constraints.*; import java.math.BigDecimal; import java.time.LocalDate; import java.util.UUID;
+public final class ExpenseDtos { public record CategoryRequest(@NotBlank String name){} public record CategoryResponse(UUID id,String name){} public record ExpenseRequest(@NotNull LocalDate date,UUID categoryId,String description,@NotNull @DecimalMin("0.00") BigDecimal amount,@NotBlank String expenseType,boolean recurring){} public record ExpenseResponse(UUID id,LocalDate date,UUID categoryId,String categoryName,String description,BigDecimal amount,String expenseType,boolean recurring){} }

@@ -1,0 +1,1 @@
+package com.bitewise.repository; import com.bitewise.entity.*; import org.springframework.data.jpa.repository.JpaRepository; import java.util.*; public interface ProductRepository extends JpaRepository<Product,UUID>{List<Product> findByBusinessIdAndActiveTrueOrderByName(UUID businessId); Optional<Product> findByIdAndBusinessId(UUID id,UUID businessId);}

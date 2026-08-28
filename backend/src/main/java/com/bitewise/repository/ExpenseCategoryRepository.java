@@ -1,0 +1,1 @@
+package com.bitewise.repository; import com.bitewise.entity.*; import org.springframework.data.jpa.repository.JpaRepository; import java.util.*; public interface ExpenseCategoryRepository extends JpaRepository<ExpenseCategory,UUID>{List<ExpenseCategory> findByBusinessIdOrderByName(UUID businessId); Optional<ExpenseCategory> findByIdAndBusinessId(UUID id,UUID businessId);}

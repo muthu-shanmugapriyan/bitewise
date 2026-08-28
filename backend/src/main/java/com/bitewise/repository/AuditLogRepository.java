@@ -1,0 +1,1 @@
+package com.bitewise.repository; import com.bitewise.entity.*; import org.springframework.data.jpa.repository.JpaRepository; import java.util.*; public interface AuditLogRepository extends JpaRepository<AuditLog,UUID>{List<AuditLog> findTop100ByBusinessIdOrderByCreatedAtDesc(UUID businessId);}

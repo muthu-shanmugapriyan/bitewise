@@ -1,0 +1,277 @@
+/* ══════════════════════════════════════════════════════════════
+   BiteWise Design System — "The Kitchen Ticket"
+   A visual language built from spice-market colour, hand-lettered
+   signage type, and the everyday artefact of a food stall: the
+   order ticket / receipt. No photography, no stock imagery —
+   texture and warmth come from colour, type, shape and motion.
+   ══════════════════════════════════════════════════════════════ */
+
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,500;1,9..144,600&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap");
+
+:root {
+  /* ── Surfaces — a well-seasoned kitchen counter, not a boardroom ── */
+  --ink-950: #150F0B;
+  --ink-900: #1C140D;
+  --ink-800: #241A12;
+  --ink-700: #2D2118;
+  --ink-600: #3A2A1E;
+  --ink-500: #4A3728;
+
+  /* ── Paper / ink text on dark surfaces ── */
+  --paper: #F7EEDD;
+  --paper-dim: #C7B49A;
+  --paper-faint: #8C7A66;
+
+  /* ── Spice-rack accents ── */
+  --chili: #E85D2C;         /* primary brand + CTA — chili-paprika */
+  --chili-strong: #FF7640;
+  --chili-dark: #B8431A;
+  --chili-wash: rgba(232, 93, 44, 0.14);
+
+  --turmeric: #F2B93D;      /* secondary accent — warm turmeric gold */
+  --turmeric-dark: #C6921F;
+  --turmeric-wash: rgba(242, 185, 61, 0.14);
+
+  --curry: #8FAE52;         /* positive / profit — curry leaf green */
+  --curry-dark: #6C8B37;
+  --curry-wash: rgba(143, 174, 82, 0.14);
+
+  --brick: #C05A42;         /* negative / expense / alert — tamarind brick */
+  --brick-dark: #9A4230;
+  --brick-wash: rgba(192, 90, 66, 0.14);
+
+  --masala-teal: #4A9490;   /* tertiary — leave for chart variety */
+  --masala-teal-wash: rgba(74, 148, 144, 0.14);
+
+  --paper-card: #FBF3E4;    /* literal "paper" surfaces — receipts, tickets */
+  --paper-card-ink: #241A12;
+
+  /* ── Typography ── */
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-body: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-data: "Space Grotesk", "Manrope", ui-sans-serif, sans-serif;
+
+  /* ── Elevation & rhythm ── */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+
+  --shadow-soft: 0 1px 2px rgba(10, 6, 3, 0.4), 0 8px 24px -12px rgba(10, 6, 3, 0.5);
+  --shadow-lift: 0 4px 10px rgba(10, 6, 3, 0.35), 0 20px 40px -16px rgba(10, 6, 3, 0.6);
+  --shadow-glow-chili: 0 8px 30px -8px rgba(232, 93, 44, 0.55);
+
+  --line: rgba(247, 238, 221, 0.09);
+  --line-strong: rgba(247, 238, 221, 0.16);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   Base
+   ══════════════════════════════════════════════════════════════ */
+
+html, body, #root {
+  background: var(--ink-950);
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--ink-950);
+  color: var(--paper);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0;
+  color: var(--paper);
+}
+
+p { margin: 0; }
+
+a { color: inherit; }
+
+button {
+  cursor: pointer;
+  font-family: var(--font-body);
+}
+
+input, select, textarea {
+  font-family: var(--font-body);
+}
+
+.tabular {
+  font-family: var(--font-data);
+  font-variant-numeric: tabular-nums;
+}
+
+.icon-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* ── Food icon tiles — vivid, per-dish colour so the menu board pops ── */
+.icon-tile-amber { background: var(--turmeric); color: var(--ink-950); }
+.icon-tile-chili { background: var(--chili-strong); color: var(--ink-950); }
+.icon-tile-curry { background: var(--curry); color: var(--ink-950); }
+.icon-tile-teal { background: var(--masala-teal); color: #fff; }
+.icon-tile-plum { background: #C598DE; color: var(--ink-950); }
+.icon-tile-neutral { background: var(--ink-700); color: var(--paper-dim); }
+
+.icon-tile-amber svg,
+.icon-tile-chili svg,
+.icon-tile-curry svg,
+.icon-tile-teal svg,
+.icon-tile-plum svg { stroke-width: 2.1px; }
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--ink-600);
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--ink-950);
+}
+
+:focus-visible {
+  outline: 2px solid var(--turmeric);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   App shell + ambient background
+   ══════════════════════════════════════════════════════════════ */
+
+.app-shell {
+  position: relative;
+  display: flex;
+  min-height: 100vh;
+  background:
+    radial-gradient(1200px 700px at 14% -10%, rgba(232, 93, 44, 0.10), transparent 60%),
+    radial-gradient(900px 600px at 100% 0%, rgba(242, 185, 61, 0.07), transparent 55%),
+    var(--ink-950);
+  overflow-x: hidden;
+}
+
+.ambient {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+.ambient-one {
+  background: radial-gradient(600px 400px at 85% 8%, rgba(232, 93, 44, 0.12), transparent 70%);
+}
+
+.ambient-two {
+  background:
+    radial-gradient(500px 380px at 8% 92%, rgba(143, 174, 82, 0.08), transparent 70%);
+}
+
+/* Fine grain texture — evokes butcher paper / kraft board, no image asset */
+.app-shell::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image:
+    radial-gradient(circle at 1px 1px, #fff 1px, transparent 0);
+  background-size: 3px 3px;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   Perforation / ticket-tear motif — the signature device, reused
+   as section dividers, card edges and modal seams.
+   ══════════════════════════════════════════════════════════════ */
+
+.perf-divider {
+  height: 1px;
+  background-image: radial-gradient(circle, var(--line-strong) 1.4px, transparent 1.6px);
+  background-size: 10px 1px;
+  background-repeat: repeat-x;
+  border: none;
+  margin: 0;
+}
+
+.perf-divider-v {
+  width: 1px;
+  background-image: radial-gradient(circle, var(--line-strong) 1.4px, transparent 1.6px);
+  background-size: 1px 10px;
+  background-repeat: repeat-y;
+}
+
+.torn-edge-top {
+  position: relative;
+}
+.torn-edge-top::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background:
+    radial-gradient(circle at 8px 0, transparent 7px, var(--paper-card) 7.5px) top left / 16px 16px repeat-x;
+  transform: translateY(-50%);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   Motion library
+   ══════════════════════════════════════════════════════════════ */
+
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pop-in {
+  from { opacity: 0; transform: scale(0.94); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes soft-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(232, 93, 44, 0.45); }
+  50% { box-shadow: 0 0 0 10px rgba(232, 93, 44, 0); }
+}
+
+@keyframes steam-drift {
+  0% { transform: translateY(0) scaleX(1); opacity: 0.5; }
+  50% { transform: translateY(-4px) scaleX(1.08); opacity: 0.9; }
+  100% { transform: translateY(0) scaleX(1); opacity: 0.5; }
+}
+
+@keyframes stamp-down {
+  0% { opacity: 0; transform: scale(2.2) rotate(-16deg); }
+  55% { opacity: 1; transform: scale(0.92) rotate(-8deg); }
+  75% { transform: scale(1.05) rotate(-8deg); }
+  100% { opacity: 1; transform: scale(1) rotate(-8deg); }
+}
+
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(12px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

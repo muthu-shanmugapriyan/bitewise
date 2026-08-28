@@ -1,0 +1,3 @@
+package com.bitewise.dto;
+import jakarta.validation.constraints.*; import java.math.BigDecimal; import java.util.UUID;
+public final class ProductDtos { public record CategoryRequest(@NotBlank String name,String iconKey){} public record CategoryResponse(UUID id,String name,String iconKey){} public record ProductRequest(@NotBlank String name,UUID categoryId,String iconKey,@NotNull @DecimalMin("0.00") BigDecimal sellingPrice,@NotNull @DecimalMin("0.00") BigDecimal costPrice,Boolean active){} public record ProductResponse(UUID id,String name,UUID categoryId,String categoryName,String iconKey,BigDecimal sellingPrice,BigDecimal costPrice,BigDecimal unitProfit,BigDecimal margin,boolean active){} }

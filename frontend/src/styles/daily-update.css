@@ -1,0 +1,276 @@
+/* ══════════════════════════════════════════════════════════════
+   Daily update
+   ══════════════════════════════════════════════════════════════ */
+
+.daily-sales-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  background: var(--ink-800);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  margin-bottom: 18px;
+}
+.daily-sales-header .header-left { display: flex; align-items: center; gap: 12px; }
+.daily-sales-header .header-left label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--paper-faint);
+}
+.date-tag {
+  font-size: 11.5px;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--turmeric-wash);
+  color: var(--turmeric);
+  font-weight: 700;
+}
+.header-right { display: flex; align-items: center; gap: 12px; }
+
+.status-badge {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 7px 13px;
+  border-radius: var(--radius-pill);
+}
+.status-badge.open { background: var(--curry-wash); color: var(--curry); }
+.status-badge.closed { background: var(--ink-700); color: var(--paper-faint); }
+
+.close-day-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid var(--brick);
+  background: var(--brick-wash);
+  color: #f0b2a3;
+  padding: 9px 15px;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  font-size: 12.5px;
+  transition: transform 0.15s var(--ease-out), opacity 0.15s;
+}
+.close-day-btn:hover:not(:disabled) { transform: translateY(-1px); }
+.close-day-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* ── Sale rows ── */
+
+.sale-products-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sales-item-row {
+  display: grid;
+  grid-template-columns: 44px 1.6fr auto auto 1fr;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line);
+  background: var(--ink-700);
+  transition: border-color 0.2s var(--ease-out), background 0.2s;
+}
+.sales-item-row.has-qty { border-color: var(--curry); background: var(--curry-wash); }
+
+.product-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.product-info { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.product-info strong { font-size: 13.5px; }
+.product-info span { font-size: 11.5px; color: var(--paper-faint); }
+
+.quick-presets { display: flex; gap: 6px; }
+.preset-btn {
+  border: 1px solid var(--line-strong);
+  background: var(--ink-800);
+  color: var(--paper-dim);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 9px;
+  border-radius: var(--radius-sm);
+}
+.preset-btn:hover:not(:disabled) { border-color: var(--turmeric); color: var(--turmeric); }
+.preset-btn:disabled { opacity: 0.35; }
+
+.counter-box {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: var(--ink-800);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+.counter-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  color: var(--paper-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.12s, transform 0.12s;
+}
+.counter-btn:hover:not(:disabled) { background: var(--chili-wash); color: var(--chili-strong); }
+.counter-btn:active:not(:disabled) { transform: scale(0.88); }
+.counter-btn:disabled { opacity: 0.3; }
+.counter-input {
+  width: 42px;
+  text-align: center;
+  border: none;
+  background: transparent;
+  color: var(--paper);
+  font-size: 14px;
+  font-weight: 700;
+  -moz-appearance: textfield;
+}
+.counter-input::-webkit-outer-spin-button,
+.counter-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+.sale-item-total {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  min-width: 80px;
+}
+.sale-item-total strong { font-size: 13.5px; }
+.sale-item-total span { font-size: 11px; color: var(--paper-faint); }
+
+/* ── Footer summary ── */
+
+.daily-summary-footer {
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px dashed var(--line-strong);
+}
+
+.summary-pills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.sum-pill {
+  background: var(--ink-700);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.sum-pill span { font-size: 11px; color: var(--paper-faint); font-weight: 600; }
+.sum-pill strong { font-size: 16px; }
+.sum-pill.highlight {
+  background: var(--curry-wash);
+  border-color: var(--curry);
+}
+.sum-pill.highlight strong { color: var(--curry); }
+
+.save-action-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.order-count-input { display: flex; flex-direction: column; gap: 5px; max-width: 110px; }
+.order-count-input label { font-size: 11.5px; color: var(--paper-faint); font-weight: 700; }
+.order-count-input input {
+  background: var(--ink-700);
+  border: 1px solid var(--line-strong);
+  color: var(--paper);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 13.5px;
+}
+
+.save-sales-btn { margin-left: auto; }
+
+/* ── Close-day modal ── */
+
+.close-day-summary-box { display: flex; flex-direction: column; gap: 10px; }
+.cd-metric-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13.5px;
+  color: var(--paper-dim);
+}
+.cd-metric-row.highlight { font-size: 15px; }
+.profit-text { color: var(--curry); }
+.cd-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--turmeric);
+  background: var(--turmeric-wash);
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  margin-top: 6px;
+}
+
+@media (max-width: 700px) {
+  /* Compact 2-row mobile layout: icon spans both rows on the left; name +
+     price sit above the +5/+10 presets, while the qty stepper sits above
+     the revenue/sold total on the right — mirroring the same grouping
+     logic as desktop but stacked far more tightly, so several products
+     are visible at once instead of one tall card per screen. */
+  .sales-item-row {
+    grid-template-columns: 40px 1fr auto;
+    grid-template-areas:
+      "icon info counter"
+      "icon presets total";
+    column-gap: 10px;
+    row-gap: 5px;
+    padding: 10px 12px;
+  }
+  .product-icon {
+    grid-area: icon;
+    width: 38px;
+    height: 38px;
+    align-self: center;
+  }
+  .product-info { grid-area: info; justify-content: center; }
+  .quick-presets { grid-area: presets; align-self: center; }
+  .counter-box { grid-area: counter; justify-self: end; align-self: center; }
+  .sale-item-total {
+    grid-area: total;
+    justify-self: end;
+    align-self: center;
+    min-width: 0;
+  }
+
+  /* Slightly denser controls to match the tighter card */
+  .counter-btn { width: 28px; height: 28px; }
+  .counter-input { width: 34px; font-size: 13px; }
+  .preset-btn { padding: 5px 8px; font-size: 10.5px; }
+
+  .product-info strong {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .sale-products-list { gap: 7px; }
+}

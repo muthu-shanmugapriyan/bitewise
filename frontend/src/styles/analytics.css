@@ -1,0 +1,141 @@
+/* ══════════════════════════════════════════════════════════════
+   Analytics page
+   ══════════════════════════════════════════════════════════════ */
+
+.metric-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin-bottom: 22px;
+}
+.metric-tile {
+  background: var(--ink-800);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+}
+.metric-tile span { font-size: 12px; color: var(--paper-faint); font-weight: 600; }
+.metric-tile strong { display: block; font-size: 22px; margin-top: 6px; }
+
+.performer-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-bottom: 22px;
+}
+.performer-card {
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  border: 1px solid var(--line);
+  background: var(--ink-800);
+}
+.performer-card.top { border-color: var(--turmeric); background: var(--turmeric-wash); }
+.performer-card.profit { border-color: var(--curry); background: var(--curry-wash); }
+.performer-card.attention { border-color: var(--brick); background: var(--brick-wash); }
+.performer-tag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+.performer-card.top .performer-tag { color: var(--turmeric); }
+.performer-card.profit .performer-tag { color: var(--curry); }
+.performer-card.attention .performer-tag { color: var(--brick); }
+.performer-name { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.performer-sub { font-size: 12.5px; color: var(--paper-faint); }
+
+.analytics-comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.donut-center {
+  position: absolute;
+  top: 44%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  pointer-events: none;
+}
+.donut-center span { display: block; font-size: 11px; color: var(--paper-faint); }
+.donut-center strong { font-size: 16px; }
+
+/* ── Classification table ── */
+
+.performance-table { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.perf-header-row, .perf-row {
+  display: grid;
+  grid-template-columns: 1.8fr 1.4fr 0.8fr 1fr 1fr 0.8fr;
+  gap: 10px;
+  align-items: center;
+  padding: 12px 14px;
+  min-width: 560px;
+}
+.perf-header-row {
+  border-bottom: 1px solid var(--line-strong);
+  color: var(--paper-faint);
+  font-size: 11.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.perf-row {
+  border-bottom: 1px solid var(--line);
+  font-size: 13px;
+}
+.perf-row:last-child { border-bottom: none; }
+.perf-row:hover { background: var(--ink-700); border-radius: var(--radius-sm); }
+
+.class-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+}
+.badge-standard { background: var(--ink-700); color: var(--paper-faint); }
+.badge-best { background: var(--turmeric-wash); color: var(--turmeric); border: 1px solid var(--turmeric); }
+.badge-margin { background: var(--curry-wash); color: var(--curry); border: 1px solid var(--curry); }
+.badge-attention { background: var(--brick-wash); color: var(--brick); border: 1px solid var(--brick); }
+
+.margin-pill {
+  background: var(--ink-700);
+  padding: 4px 9px;
+  border-radius: var(--radius-sm);
+  display: inline-block;
+  text-align: center;
+}
+
+.insights-card .insight-list { display: flex; flex-direction: column; gap: 10px; }
+.insight-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  background: var(--curry-wash);
+  border-left: 3px solid var(--curry);
+  border-radius: 8px;
+  padding: 11px 14px;
+  color: var(--curry);
+}
+.insight-item p { color: var(--paper); font-size: 13px; }
+
+@media (max-width: 700px) {
+  .analytics-comparison-grid { grid-template-columns: 1fr; }
+
+  /* Fade the right edge of the classification table as a visual cue that
+     it scrolls horizontally, without changing the underlying markup. */
+  .performance-table {
+    mask-image: linear-gradient(to right, black calc(100% - 22px), transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, black calc(100% - 22px), transparent 100%);
+  }
+
+  /* A touch more breathing room between the two mobile stat groups so
+     they read as distinct sections rather than one dense block. */
+  .metric-tiles { margin-top: 4px; }
+}

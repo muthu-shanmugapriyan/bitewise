@@ -1,0 +1,1 @@
+package com.bitewise.repository; import com.bitewise.entity.*; import org.springframework.data.jpa.repository.JpaRepository; import java.util.*; public interface BusinessRepository extends JpaRepository<Business,UUID>{Optional<Business> findByUserId(UUID userId);}

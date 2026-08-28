@@ -1,0 +1,3 @@
+package com.bitewise.entity;
+import jakarta.persistence.*; import java.util.UUID;
+@Entity @Table(name="product_categories") public class ProductCategory { @Id @GeneratedValue(strategy=GenerationType.UUID) private UUID id; @ManyToOne(fetch=FetchType.LAZY) @JoinColumn(name="business_id",nullable=false) private Business business; @Column(nullable=false) private String name; @Column(name="icon_key") private String iconKey; public ProductCategory(){} public ProductCategory(Business b,String n,String i){business=b;name=n;iconKey=i;} public UUID getId(){return id;} public Business getBusiness(){return business;} public String getName(){return name;} public String getIconKey(){return iconKey;} }
